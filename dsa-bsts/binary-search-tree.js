@@ -15,7 +15,28 @@ class BinarySearchTree {
    * Returns the tree. Uses iteration. */
 
   insert(val) {
-
+    if (this.root === null) {
+      this.root = new Node(val)
+      return this; // for inserting at a non-existing tree
+    }
+    let current = this.root;
+    while (current) {
+      if (val < current.val) {
+        if (current.left === null) {
+          current.left = new Node(val);
+          return this;
+        } else {
+          current = current.left;
+        }
+      } else if (val > current.val) {
+        if (current.right === null) {
+          current.right = new Node(val);
+          return this;
+        } else {
+          current = current.right
+        }
+      }
+    }
   }
 
   /** insertRecursively(val): insert a new node into the BST with value val.
@@ -87,7 +108,7 @@ class BinarySearchTree {
    * Otherwise return undefined. */
 
   findSecondHighest() {
-    
+
   }
 }
 
